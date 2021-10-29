@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}"/> 
+<head>
+    <title>Booklist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Muuta kirja</h1>
+	<div>
+		<form th:object="${book}" th:action="@{../save}" action="#" method="post">
+		
+			<input type="hidden" id="id" th:field="*{id}"/>
+		
+		  	<label for="author">Kirjailija</label>
+			<input type="text" id="author" th:field="*{author}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		  	<label for="title">Kirjan nimi</label>
+			<input type="text" id="title" th:field="*{title}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		  	<label for="year">Vuosi</label>
+			<input type="text" id="year" th:field="*{year}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="price">Hinta</label>
+			<input type="text" id="price" th:field="*{price}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="isbn">ISBN</label>
+			<input type="text" id="isbn" th:field="*{isbn}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+									<div style="clear: both; display: block; height: 10px;"></div>						
+		  	<label for="catlist">Kategoria</label>
+			 <select id="catlist" th:field="*{category}" class="form-control">
+       			<option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+    		</select>			
+
+			<br>
+			<input type="submit" class="btn btn-success" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>
